@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <title>Document</title>
+</head>
+<body>
+    <main class="container">
+        <h2>Berryvine</h2>
+        <h3>Libre Media Sharing Software</h3>
+        <div class="buttons">
+            <a href="/upload">Upload</a>
+            <a href="/login">Login</a>
+        </div>
+        <div class="clips">
+        {{#each files}}
+            <article>
+                <h3>{{name}}</h3>
+                <video width="320" height="240" controls>
+                    <source src="{{file}}" type="video/mp4">
+                </video>
+            </article>
+        {{/each}}
+        </div>
+    </main>
+</body>
+</html>
+<style>
+    h2 {
+        text-align: center;
+    }
+    h3 {
+        text-align: center;
+    }
+    div.buttons {
+        text-align: center;
+    }
+    video {
+        margin: auto;
+        display: block;
+    }
+    div.clips {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+    }
+    article {
+        
+    }
+</style>
