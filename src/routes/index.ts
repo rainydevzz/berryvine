@@ -14,6 +14,7 @@ export const index = new Elysia()
         let render = hbs.compile(contents);
         let files = (await glob("**", {ignore: "node_modules/**"})).filter(f => f.startsWith("files") && f.includes("/"));
         console.log(files);
+        files.forEach(f => f = './' + f);
         let fileArr = [];
         let names = db.select().from(metadata).all();
         if(names.length > 0) {
