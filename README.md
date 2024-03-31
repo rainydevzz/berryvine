@@ -25,6 +25,6 @@ There is an example NGINX File at `nginx_example`.
 
 ### Known Issues
 
-Videos aren't showing up in Embed, and won't seem to play inside of Discord.
+Videos aren't showing up in Embed. DIRECT FILE LINKS NOW PLAY IN DISCORD!
 
 However visiting the home page or the file url directly works completely fine.
