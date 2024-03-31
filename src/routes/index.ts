@@ -13,6 +13,7 @@ export const index = new Elysia()
         let contents = await Bun.file('./static/index.hbs').text();
         let render = hbs.compile(contents);
         let files = (await glob("**", {ignore: "node_modules/**"})).filter(f => f.startsWith("files") && f.includes("/"));
+        console.log(files);
         let fileArr = [];
         let names = db.select().from(metadata).all();
         if(names.length > 0) {
