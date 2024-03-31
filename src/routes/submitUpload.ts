@@ -5,6 +5,7 @@ import { FileBody } from "..";
 import { db } from "../migrate";
 import { metadata } from "../schema";
 import { staticPlugin } from "@elysiajs/static";
+import { v4 as uuidv4 } from 'uuid';
 
 export const submitUpload = new Elysia()
     .use(staticPlugin({assets: './files', alwaysStatic: false, indexHTML: true, prefix: '/files'}))
@@ -24,14 +25,15 @@ export const submitUpload = new Elysia()
           set.status = 'Unsupported Media Type';
           return 'MP4s Only!';
         }
-        let h = (await Bun.password.hash(b.file.stream().toString())).replace(/\//g, "slash").replace(".", "");
-        await Bun.write(`files/${h}.mp4`, b.file);
+        let u = uuidv4();
+        console.log(u);
+        await Bun.write(`files/${u}.mp4`, b.file);
         let name = "" != b.name ? b.name : "My Clip";
         await db.insert(metadata).values([
             {
-                id: h,
+                id: u,
                 name: name,
-                path: `files/${h}.mp4`
+                path: `files/${u}.mp4`
             }
         ]);
         set.redirect = '/';
