@@ -2,7 +2,7 @@ import { html } from '@elysiajs/html';
 import { Elysia } from 'elysia';
 import hbs from 'handlebars';
 import { globSync } from 'glob';
-import { db } from '..';
+import { db } from '../migrate';
 import { metadata } from '../schema';
 import { staticPlugin } from '@elysiajs/static';
 
@@ -15,9 +15,10 @@ export const index = new Elysia()
         let files = globSync("**", {ignore: "node_modules/**"}).filter(f => f.startsWith("files") && f.includes("/"));
         let fileArr = [];
         let names = await db.select().from(metadata).all();
-        console.log(names);
-        for(const i in files) {
-          fileArr.push({file: files[i], name: names[i].name});
+        if(names.length > 0) {
+          for(const i in files) {
+            fileArr.push({file: files[i], name: names[i].name, id: names[i].id});
+          }
         }
         return render({files: fileArr})
     })

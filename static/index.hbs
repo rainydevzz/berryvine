@@ -24,6 +24,7 @@
                 <video width="320" height="240" controls>
                     <source src="{{file}}" type="video/mp4">
                 </video>
+                <a class="share" href="/share-link/{{id}}">Copy Link</a>
             </article>
         {{/each}}
         </div>
@@ -50,7 +51,9 @@
         gap: 10px;
         grid-auto-rows: minmax(100px, auto);
     }
-    article {
-        
+    a.share {
+        text-align: center;
+        margin: auto;
+        display: block;
     }
 </style>

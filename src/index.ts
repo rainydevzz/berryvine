@@ -1,21 +1,22 @@
 import { Elysia } from "elysia";
-import { drizzle } from "drizzle-orm/bun-sqlite";
-import { Database } from "bun:sqlite";
 import { index } from "./routes";
 import { login } from "./routes/login";
 import { submitLogin } from "./routes/submitLogin";
 import { upload } from "./routes/upload";
 import { submitUpload } from "./routes/submitUpload";
+import { shareLinks } from "./routes/shareLink";
+import { mkdir, exists } from "fs/promises";
 
-const sqlite = new Database("sqlite.db");
-export const db = drizzle(sqlite);
+if(!await exists("./files")) {
+  await mkdir("./files");
+}
 
 export interface AuthBody {
   auth: string;
 }
 
 export interface FileBody {
-  file: any;
+  file: Blob;
   name: string;
 }
 
@@ -25,6 +26,7 @@ const app = new Elysia()
   .use(submitLogin)
   .use(upload)
   .use(submitUpload)
+  .use(shareLinks)
   .listen(8080);
 
 console.log(

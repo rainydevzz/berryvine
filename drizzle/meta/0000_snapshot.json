@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "2891e39b-c86d-4e3b-988e-208c025903c5",
+  "id": "f2647b7a-d220-4ea4-bdf0-34297e9e8264",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "metadata": {
@@ -18,7 +18,14 @@
           "name": "name",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "path": {
+          "name": "path",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
           "autoincrement": false
         }
       },

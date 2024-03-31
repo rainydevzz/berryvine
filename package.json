@@ -13,9 +13,11 @@
     "drizzle-orm": "^0.30.6",
     "elysia": "latest",
     "glob": "^10.3.12",
-    "handlebars": "^4.7.8"
+    "handlebars": "^4.7.8",
+    "md5": "^2.3.0"
   },
   "devDependencies": {
+    "@types/md5": "^2.3.5",
     "bun-types": "latest"
   },
   "module": "src/index.js"

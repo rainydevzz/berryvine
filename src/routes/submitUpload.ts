@@ -1,7 +1,8 @@
 import { html } from "@elysiajs/html";
 import { jwt } from "@elysiajs/jwt";
 import Elysia from "elysia";
-import { FileBody, db } from "..";
+import { FileBody } from "..";
+import { db } from "../migrate";
 import { metadata } from "../schema";
 import { staticPlugin } from "@elysiajs/static";
 
@@ -23,13 +24,14 @@ export const submitUpload = new Elysia()
           set.status = 'Unsupported Media Type';
           return 'MP4s Only!';
         }
-        let h = await Bun.password.hash(b.file, {algorithm: 'bcrypt'});
-        await Bun.write(`./files/${h}.mp4`, b.file);
+        let h = (await Bun.password.hash(b.file.stream().toString())).replace(/\//g, "slash").replace(".", "");
+        await Bun.write(`files/${h}.mp4`, b.file);
         let name = "" != b.name ? b.name : "My Clip";
         await db.insert(metadata).values([
             {
                 id: h,
-                name: name
+                name: name,
+                path: `files/${h}.mp4`
             }
         ]);
         set.redirect = '/';

@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/rainy/projs/berryvine/files:/usr/app/files:rw
+      - /home/rainy/projs/berryvine/db:/usr/app/db:rw
+volumes:
+  files:
+  db:

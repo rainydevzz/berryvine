@@ -45,3 +45,4 @@ package-lock.json
 sqlite.db
 files
 .env
+db
