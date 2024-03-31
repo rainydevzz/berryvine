@@ -27,7 +27,7 @@ const app = new Elysia()
   .use(upload)
   .use(submitUpload)
   .use(shareLinks)
-  .listen(8100);
+  .listen({port: 8100});
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
