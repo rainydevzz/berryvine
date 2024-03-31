@@ -6,6 +6,8 @@ services:
     volumes:
       - /home/rainy/projs/berryvine/files:/usr/app/files:rw
       - /home/rainy/projs/berryvine/db:/usr/app/db:rw
+    environment:
+      - SECRET=abc
 volumes:
   files:
   db:
