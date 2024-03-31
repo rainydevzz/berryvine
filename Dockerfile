@@ -36,6 +36,6 @@ COPY --from=prerelease /usr/app/package.json .
 
 # run the app
 USER root
-EXPOSE 8080/tcp
+EXPOSE 8100/tcp
 RUN bun run ./src/migrate.ts
 ENTRYPOINT [ "bun", "run", "./src/index.ts" ]
