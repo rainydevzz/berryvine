@@ -3,23 +3,23 @@
 <head>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            let toChange = document.querySelectorAll('meta[value="urlvar"]')
+            let toChange = document.querySelectorAll('meta[content="urlvar"]')
             let vid = document.getElementsByTagName("source").item(0).getAttribute("src");
             console.log(window.location.host);
             for(const e of toChange.entries()) {
-                e[1].setAttribute('value', `${window.location.protocol}//${window.location.host}${vid.replace("..", "")}`)
+                e[1].setAttribute('content', `${window.location.protocol}//${window.location.host}${vid.replace("..", "")}`)
             }
         });
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="{{name}}" property="og:title" />
-    <meta value="Self-Hosted Media with Berryvine!" property="og:description" />
+    <meta content="Self-Hosted Media with Berryvine!" property="og:description" />
     <meta content="{{site}}" property="og:url" />
     <meta class="urlv" property="og:video" content="urlvar" />
     <meta property="og:video:type" content="video/mp4" />
-    <meta class="urlv" property="og:video:url" value="urlvar" />
-    <meta class="urlv" property="og:video:secure_url" value="urlvar" />
+    <meta class="urlv" property="og:video:url" content="urlvar" />
+    <meta class="urlv" property="og:video:secure_url" content="urlvar" />
     <meta property="og:video:width" content="1280" />
     <meta property="og:video:height" content="720" />
     <title>Document</title>
