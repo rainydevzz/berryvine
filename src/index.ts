@@ -5,11 +5,6 @@ import { submitLogin } from "./routes/submitLogin";
 import { upload } from "./routes/upload";
 import { submitUpload } from "./routes/submitUpload";
 import { shareLinks } from "./routes/shareLink";
-import { mkdir, exists } from "fs/promises";
-
-if(!await exists("./files")) {
-  await mkdir("./files");
-}
 
 export interface AuthBody {
   auth: string;
