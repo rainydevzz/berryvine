@@ -12,17 +12,6 @@ export const index = new Elysia()
     .get('/', async () => {
         let contents = await Bun.file('./static/index.hbs').text();
         let render = hbs.compile(contents);
-        let files = (await glob("**", {ignore: "node_modules/**"})).filter(f => f.startsWith("files") && f.includes("/"));
-        let fixedFiles = [];
-        for(const f of files) {
-          fixedFiles.push('./' + f);
-        }
-        let fileArr = [];
-        let names = db.select().from(metadata).all();
-        if(names.length > 0) {
-          for(const i in fixedFiles) {
-            fileArr.push({file: fixedFiles[i], name: names[i].name, id: names[i].id});
-          }
-        }
-        return render({files: fileArr})
+        let data = db.select().from(metadata).all();
+        return render({files: data})
     })
