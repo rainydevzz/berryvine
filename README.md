@@ -1,5 +1,7 @@
 # Berryvine
 
+**This repository has been archived as a part of my partial migration to Codeberg. As far as I know, it is still functional, but no further updates will be received to this repository. Any further development will happen on my [Codeberg](https://codeberg.org/rainy)**
+
 Simple Media/Clip Sharing powered by Bun and Elysia.
 
 Built with the BHEST Stack(tm) (Bun, Handlebars, Elysia, SQLite, Typescript)
